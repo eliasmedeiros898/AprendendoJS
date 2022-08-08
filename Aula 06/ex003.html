@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site 001</title>
+    <style>
+
+        body{
+            background-color: beige;
+            color: black;
+            font: normal 12pt Arial;
+            
+        }
+        p{
+            color: aquamarine;
+            font: bold 7pt 
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Olá, Mundo</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis commodi et quos maiores harum ea praesentium, quam totam omnis officia, cumque sapiente labore mollitia facilis asperiores ex. Deleniti, maxime consequatur?</p>
+    <script>
+       var n1 = Number.parseInt(window.prompt("Digite um número: ")) //window.prompt recebe String, usamos o Number.parseInt para converter para inteiro ou o Number.parseFloat para converter para float. Podemos usar também somente o Number e deixar o JS escolher entre Int ou Float.
+       let n2 = Number.parseInt(window.prompt("Digite outro número: ")) // let também pode ser usado para atribuição de variáveis
+       var soma = n1 + n2 
+       alert("A soma é: " + soma) 
+       
+       /*
+        Também podemos converter números inteiros para strings usando o String(n) ou n.toString()
+       */
+       /*
+        Usando o template string para fazer a interpolação na formatação das strings, temos:
+       */
+      alert(`A soma entre ${n1} e ${n2} é: ${soma}`)
+
+      var string = "JavaScript"
+
+      alert(`Valor em caixa alta -> ${string.toUpperCase()}\nValor em caixa baixa -> ${string.toLowerCase()}\nTamanho da String -> ${string.length}`)
+
+    </script>
+</body>
+</html>
