@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+</head>
+<body>
+    <h1>Detran</h1>
+    <h2>Controle de multas</h2>
+    Velocidade do carro: <input type="number" id="txtvel"> <km>
+    <input type="button" value="Verificar" id="button" onclick="calcular()" onmouseenter="mouseEnter()" onmouseleave="mouseLeave()">
+    <div id="resultado"></div>
+    <script>
+        
+
+        function calcular(){
+            var txtvel = document.getElementById("txtvel")
+            var vel = Number(txtvel.value)
+            var resultado = document.querySelector("div#resultado")
+
+            resultado.innerHTML = `<p>Sua velocidade atual é <strong>${vel}</strong> Km/h</p>` 
+
+            if(vel > 60){
+                resultado.innerHTML += `Você está <strong>MULTADO</strong> por excesso de velocidade`
+                resultado.style.color = "red"
+            }else{
+                resultado.innerHTML += `Você está dentro da velocidade permitida`
+                resultado.style.color = "green"
+            }
+
+            
+        }
+        
+        function mouseEnter(){
+            document.getElementById("button").style.color = "green"
+
+        }
+
+        function mouseLeave(){
+            document.getElementById("button").style.color = "black"
+        }
+    </script>
+
+</body>
+</html>
