@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora CSGO 500</title>
+    <style>
+        h1{
+            color: red;
+            text-align: center;
+            font-style: oblique;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <h1>Calculadora de probabilidade csgo500</h1>
+    <p ><strong>Bet inicial:</strong> <input type="number" id="ini_bet"></p>
+    <p ><strong>Saldo inicial:</strong> <input type="number" id="saldo"></p>
+    <p ><strong>Número de bets:</strong> <input type="number" id="num_bets"> </p> 
+    <input type="button" value="Calcular" id="button" onclick="calular()">
+    <div id="resultado"></div>
+
+    <script>
+        
+
+        
+
+        function calcular(){
+            var init_bet_txt = document.getElementById("ini_bet")
+            var init_bet = Number(init_bet_txt.value)
+            var saldo_ini_txt = document.getElementById("saldo")
+            var saldo_ini = Number(saldo_ini_txt.value)
+            var saldo = saldo_ini
+            var num_txt = document.getElementById("num_bets")
+            var num = Number(num_txt.value)
+            var resultado = document.getElementById("resultado")
+            const mult = 2.1
+            total_apostado = init_bet
+            var cont = 1
+            resultado.innerText= "ola"
+            for(var i=0;i<num;i++){
+            total_apostado += init_bet * mult
+            resultado.innerText(`Aposta ${cont}: ${init_bet}`)
+            init_bet = init_bet * mult
+            
+            saldo -= init_bet
+            cont++
+            
+        }
+        resultado.innerText(`Aposta ${cont}: ${init_bet}`)
+        resultado.innerText(`Total apostado: ${total_apostado}`)
+        resultado.innerText(`Saldo restante: ${saldo}`)
+        resultado.innerText(`Saldo inicial recomendado: ${saldo_ini+(init_bet*mult-saldo)}`)
+        }
+    </script>
+</body>
+</html>
