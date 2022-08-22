@@ -6,55 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora CSGO 500</title>
     <style>
-        h1{
+        *{
             color: red;
             text-align: center;
-            font-style: oblique;
+            font-size: x-large;
+            background-color: azure;
+        }
+        h1{
+            font-size: xx-large;
+            background-color: black;
+            padding: 2%;
+            width: auto;
+        }
+        #button{
+            color: black;
+            
         }
     </style>
 
     
 </head>
 <body>
+    
     <h1>Calculadora de probabilidade csgo500</h1>
-    <p ><strong>Bet inicial:</strong> <input type="number" id="ini_bet"></p>
+    <p ><strong>Bet inicial:</strong> <input type="number" id="init_bet"></p>
     <p ><strong>Saldo inicial:</strong> <input type="number" id="saldo"></p>
     <p ><strong>Número de bets:</strong> <input type="number" id="num_bets"> </p> 
-    <input type="button" value="Calcular" id="button" onclick="calular()">
+    <input type="button" value="Calcular" onclick="calcular()">
     <div id="resultado"></div>
-
     <script>
-        
+        var ini_bet = document.querySelector("#init_bet")
+        var saldo_ini = document.querySelector("#saldo")
+        var num_bets = document.querySelector("#num_bets")
+        var resultado = document.querySelector("#resultado")
+        var saldo = saldo_ini
 
-        
+        function arredondar(n){
+            return (Math.round(n*100) / 100).toFixed(0)
+        }
+
 
         function calcular(){
-            var init_bet_txt = document.getElementById("ini_bet")
-            var init_bet = Number(init_bet_txt.value)
-            var saldo_ini_txt = document.getElementById("saldo")
-            var saldo_ini = Number(saldo_ini_txt.value)
-            var saldo = saldo_ini
-            var num_txt = document.getElementById("num_bets")
-            var num = Number(num_txt.value)
-            var resultado = document.getElementById("resultado")
-            const mult = 2.1
-            total_apostado = init_bet
             var cont = 1
-            resultado.innerText= "ola"
-            for(var i=0;i<num;i++){
-            total_apostado += init_bet * mult
-            resultado.innerText(`Aposta ${cont}: ${init_bet}`)
-            init_bet = init_bet * mult
-            
-            saldo -= init_bet
-            cont++
-            
+            total_apostado = ini_bet
+            const mult = 2.1
+
+            for(var i=1;i<num_bets;i++){
+                total_apostado += init_bet * mult
+                resultado.innerHTML = `Aposta ${cont}: ${arredondar(init_bet)}` 
+                init_bet = init_bet * mult
+                saldo -= init_bet
+                cont++
+            }
+
+            resultado.innerHTML = `Aposta ${cont}: ${arredondar(init_bet)}`
+            resultado.innerHTML = `Total apostado: ${arredondar(total_apostado)}`
+
+            if(saldo>=0){
+                resultado.innerHTML = `Saldo restante: ${arredondar(saldo)}`
+                resultado.innerHTML = `Saldo recomendado para a ${cont+1} bet: ${arredondar(init_bet*mult+saldo)}`
+            }else{
+                resultado.innerHTML = `Saldo que falta para chegar nessa aposta: ${arredondar(total_apostado - saldo_ini)}`
+                resultado.innerHTML = `Saldo recomendado para a ${cont+1} bet: ${arredondar(total_apostado + (init_bet*mult))}`
+            }
         }
-        resultado.innerText(`Aposta ${cont}: ${init_bet}`)
-        resultado.innerText(`Total apostado: ${total_apostado}`)
-        resultado.innerText(`Saldo restante: ${saldo}`)
-        resultado.innerText(`Saldo inicial recomendado: ${saldo_ini+(init_bet*mult-saldo)}`)
-        }
+            
+            
+    
     </script>
+   
 </body>
 </html>
