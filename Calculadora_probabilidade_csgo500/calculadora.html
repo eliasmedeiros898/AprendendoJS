@@ -7,14 +7,11 @@
     <title>Calculadora CSGO 500</title>
     <style>
         *{
-            color: red;
             text-align: center;
-            font-size: x-large;
-            background-color: azure;
         }
         h1{
             font-size: xx-large;
-            background-color: black;
+            background-color: rgb(0, 0, 0);
             padding: 2%;
             width: auto;
         }
@@ -22,6 +19,10 @@
             color: black;
             
         }
+        h1{
+            color: red;
+        }
+        
     </style>
 
     
@@ -29,48 +30,53 @@
 <body>
     
     <h1>Calculadora de probabilidade csgo500</h1>
-    <p ><strong>Bet inicial:</strong> <input type="number" id="init_bet"></p>
-    <p ><strong>Saldo inicial:</strong> <input type="number" id="saldo"></p>
-    <p ><strong>Número de bets:</strong> <input type="number" id="num_bets"> </p> 
-    <input type="button" value="Calcular" onclick="calcular()">
+    <p ><strong>Bet inicial:</strong> <input type="number" id="ini_bet">
+    <p ><strong>Saldo inicial:</strong> <input type="number" id="saldo_ini">
+    <p ><strong>Número de bets:</strong> <input type="number" id="num_bets">  
+    <input type="button" value="Verificar" id="button" onclick="calcular()">
     <div id="resultado"></div>
+    <div id="apostas"></div>
     <script>
-        var ini_bet = document.querySelector("#init_bet")
-        var saldo_ini = document.querySelector("#saldo")
-        var num_bets = document.querySelector("#num_bets")
-        var resultado = document.querySelector("#resultado")
-        var saldo = saldo_ini
+        
 
         function arredondar(n){
             return (Math.round(n*100) / 100).toFixed(0)
         }
 
-
         function calcular(){
+            var txt_bet_ini = document.getElementById("ini_bet")
+            var bet_ini = Number(txt_bet_ini.value)
+            var txt_saldo_ini = document.getElementById("saldo_ini")
+            var saldo_ini = Number(txt_saldo_ini.value)
+            var txt_num_bets = document.getElementById("num_bets")
+            var num_bets = Number(txt_num_bets.value)
+            var resultado = document.querySelector("div#resultado")
+            var resultado_apostas = document.getElementById("apostas")
+            var saldo = saldo_ini
             var cont = 1
-            total_apostado = ini_bet
             const mult = 2.1
-
-            for(var i=1;i<num_bets;i++){
-                total_apostado += init_bet * mult
-                resultado.innerHTML = `Aposta ${cont}: ${arredondar(init_bet)}` 
-                init_bet = init_bet * mult
-                saldo -= init_bet
-                cont++
-            }
-
-            resultado.innerHTML = `Aposta ${cont}: ${arredondar(init_bet)}`
-            resultado.innerHTML = `Total apostado: ${arredondar(total_apostado)}`
-
-            if(saldo>=0){
-                resultado.innerHTML = `Saldo restante: ${arredondar(saldo)}`
-                resultado.innerHTML = `Saldo recomendado para a ${cont+1} bet: ${arredondar(init_bet*mult+saldo)}`
-            }else{
-                resultado.innerHTML = `Saldo que falta para chegar nessa aposta: ${arredondar(total_apostado - saldo_ini)}`
-                resultado.innerHTML = `Saldo recomendado para a ${cont+1} bet: ${arredondar(total_apostado + (init_bet*mult))}`
-            }
-        }
+            var total_apostado = bet_ini * mult**num_bets
             
+            for(var i=1;i<num_bets;i++){
+                total_apostado += bet_ini *mult
+                resultado_apostas.innerHTML = `Aposta ${cont}: ${arredondar(bet_ini)}`
+                bet_ini = bet_ini *mult
+                saldo -= bet_ini
+                cont++
+
+            }
+            resultado.innerHTML = `Aposta ${cont}: ${arredondar(bet_ini)}`
+            resultado.innerHTML = `Total apostado: ${arredondar(total_apostado)}`
+            resultado.innerHTML=`<strong>Aposta inicial: ${bet_ini} | Saldo inicial: ${saldo_ini} | Número de bets: ${num_bets} | Total apostado: ${arredondar(total_apostado)}`
+        }
+
+
+
+            
+        
+        
+        
+
             
     
     </script>
