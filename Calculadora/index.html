@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Calculadora</h1></header>
+    <section>
+        <input type="number" id="number1">
+        <input type="number" id="number2">
+    </section>
+    <section>
+        <input type="button" value="+" id="soma" onclick="somar()">
+        <input type="button" value="-" id="subtrai" onclick="subtrair()">
+        <input type="button" value="x" id="multiplica" onclick="multiplicar()">
+        <input type="button" value="/" id="divide" onclick="dividir()">
+        
+    </section>
+    <section>
+        <p>Resultado: <p id="resultado"></p></p> 
+    </section>
+    <script src="script.js"></script>
+    <footer><p>&copy;EliasMedeirosDev</p></footer>
+</body>
+</html>

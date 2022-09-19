@@ -1,7 +1,7 @@
 
-var init_bet = 50
-var saldo_ini = 83000
-var num = 10
+var init_bet = 10
+var saldo_ini = 14000
+var num = 9
 var saldo = saldo_ini
 
 
